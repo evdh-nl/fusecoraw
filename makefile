@@ -2,8 +2,9 @@
 
 all: fusecow
 
-fusecow: fusecow.c makefile
+fusecow: fusecow.c fusecoraw.c makefile
 	gcc -g3 -O2 -Wall fusecow.c -o fusecow `pkg-config fuse --cflags --libs`
+	gcc -g3 -O2 -Wall fusecoraw.c -o fusecoraw `pkg-config fuse --cflags --libs`
 
 VERSION: .git/HEAD
 	git describe --dirty | sed 's!^v!!' > VERSION || echo 0.0 > VERSION
